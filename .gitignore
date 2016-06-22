@@ -1,0 +1,7 @@
+# Python Environment #
+######################
+env/*
+
+# Ansible Container repo #
+##########################
+ansible-containers/*
