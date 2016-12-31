@@ -1,0 +1,6 @@
+pip_packages:
+  - markupsafe
+  - boto
+  - boto3
+  - awscli
+  - dnspython
