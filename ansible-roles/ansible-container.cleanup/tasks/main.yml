@@ -1,0 +1,21 @@
+---
+# tasks file for ansible-container.cleanup
+- name: Clean apt.
+  command: apt-get clean
+
+- name: Clean other directories.
+  shell: rm -rf {{ item }}
+  with_items:
+    - '/var/lib/apt/lists/*'
+    - '/tmp/*'
+    - '/var/tmp/*'
+
+- name: Remove Python if keep_python is false.
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - python
+    - python-apt
+    - aptitude
+  when: remove_python is defined and remove_python
