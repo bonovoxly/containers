@@ -1,6 +1,6 @@
 # overview
 
-This playbook creates an OpenVPN Docker image using ansible-container.
+This playbook creates an OpenVPN Docker image using ansible-container. This is a similar Docker image to https://github.com/kylemanna/docker-openvpn .  It's also meant for use with the [OpenVPN playbook found here](https://github.com/bonovoxly/playbook/tree/master/ansible-playbooks).
 
 # container customizations
 
