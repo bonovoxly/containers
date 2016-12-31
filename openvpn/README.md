@@ -10,7 +10,7 @@ This playbook creates an OpenVPN Docker image using ansible-container.
 - build-key-server-automated
 - build-key-automated
 
-These scripts are the non-interactive versions of the EasyRSA CA, server, and client key/cert generation scripts. More information can be found in []`linux.openvpn_install` role](https://github.com/bonovoxly/containers/tree/master/ansible-roles/linux.openvpn_install).
+These scripts are the non-interactive versions of the EasyRSA CA, server, and client key/cert generation scripts. More information can be found in [`linux.openvpn_install` role](https://github.com/bonovoxly/containers/tree/master/ansible-roles/linux.openvpn_install).
 
 # quickstart
 
