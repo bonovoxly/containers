@@ -4,13 +4,15 @@ This playbook creates an OpenVPN Docker image using ansible-container.
 
 # container customizations
 
- Aside from the normal settings of OpenVPN, this container adds the following scripts:
+Aside from initial configuration of the Docker image and general settings of OpenVPN, this ansible-container project configures OpenVPN in the following way:
 
-- build-ca-automated
-- build-key-server-automated
-- build-key-automated
+- Installs iptables, openvpn, and easy-rsa.
+- Enables IP routing.
+- Configures easy-rsa, including adding `build-ca-automated`, `build-key-server-automated`, and `build-key-automated` scripts, to fully automate SSL creation.
+- Adds the `run.sh` launcher script.
+- Creates the log directory, `/var/log/openvpn`.
 
-These scripts are the non-interactive versions of the EasyRSA CA, server, and client key/cert generation scripts. More information can be found in [`linux.openvpn_install` role](https://github.com/bonovoxly/containers/tree/master/ansible-roles/linux.openvpn_install).
+This is just a summary of some of the customizations and are not all inclusive.  See the `ansible/main.yml` file for more information.
 
 # quickstart
 
