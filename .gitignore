@@ -1,7 +1,7 @@
+# OS X files #
+##############
+.DS_Store
+
 # Python Environment #
 ######################
 env/*
-
-# Ansible Container repo #
-##########################
-ansible-container/*
