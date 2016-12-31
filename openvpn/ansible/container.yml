@@ -1,0 +1,13 @@
+version: "1"
+services:
+  openvpn:
+    environment:
+      OVPN_SERVER: "{{ OVPN_SERVER | default('') }}"
+      INTERFACE: "{{ INTERFACE | default('eth0') }}"
+    image: ubuntu:16.04
+    command: ['/run.sh']
+# registries: {}
+registries:
+  docker:
+    url: {{ docker_url }}
+    namespace: {{ docker_namespace }}
