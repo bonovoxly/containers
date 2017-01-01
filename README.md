@@ -13,27 +13,30 @@ Note these use cases are a bit unique and solve a particular niche issue.  Howev
 - Clone the repository:
 
 ```
-% git clone git@github.com:bonovoxly/playbook.git
-% git clone git@github.com:bonovoxly/containers.git
+git clone git@github.com:bonovoxly/playbook.git
+git clone git@github.com:bonovoxly/containers.git
 ```
 
 - From the `containers` project directory, setup the environment:
 
 ```
-% cd containers
-% ./environment.sh
+cd containers
+./environment.sh
 ```
 
 - Activate the PIP environment:
 
 ```
-% source ./env/bin/activate
+source ./env/bin/activate
 ```
 
 - Verify ansible-container is active:
 
 ```
-% ansible-container version
+ansible-container version
+```
+Output should be:
+```
 Ansible Container, version 0.2.0
 ```
 
