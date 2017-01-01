@@ -16,7 +16,14 @@ This is just a summary of some of the customizations and are not all inclusive. 
 
 # quickstart
 
-- To build the Docker images change to the project, run:
+- To build the Docker images change to the project, set the environment (see the project README.md for more information):
+
+```
+../environment.sh
+source ../env/bin/activate
+```
+
+- Then build the image:
 
 ```
 ansible-container build --with-volumes ${PWD}/../ansible-roles:/roles
