@@ -14,3 +14,9 @@
     mode: 0600
     owner: "{{ item.name }}"
   with_items: "{{ users_vars }}"
+
+- name: Edit admin group in sudoers.
+  lineinfile:
+    path: /etc/sudoers
+    regexp: '^%admin'
+    line: '%admin ALL=(ALL) NOPASSWD: ALL'
