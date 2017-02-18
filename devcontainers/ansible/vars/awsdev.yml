@@ -1,4 +1,8 @@
 
+apt_packages:
+  - wget
+
+
 pip_packages:
   - markupsafe
   - boto
