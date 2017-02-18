@@ -22,7 +22,7 @@ if [ ! -f /etc/openvpn/keys/index.txt ]; then
 fi
 
 # configure iptables
-${INTERFACE:=eth0}
+INTERFACE=${INTERFACE:=eth0}
 iptables -t nat -I POSTROUTING -o $INTERFACE -j MASQUERADE
 
 # launch OpenVPN
