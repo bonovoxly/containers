@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# this installs Ansible and Ansible Container tools.
+# requires that virtualenv be installed
 if [ ! -f ./env/bin/activate ]; then
   virtualenv env
   source ./env/bin/activate
