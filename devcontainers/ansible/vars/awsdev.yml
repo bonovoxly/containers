@@ -10,5 +10,5 @@ pip_packages:
 users:
   - name: aws-user
     shell: /bin/zsh
-    groups: sudo
+    groups: admin
     shell_config: .zshrc
