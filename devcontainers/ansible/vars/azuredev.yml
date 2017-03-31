@@ -9,5 +9,5 @@ npm_packages:
 users:
   - name: azure-user
     shell: /bin/zsh
-    groups: admin 
+    groups: sudo 
     shell_config: .zshrc

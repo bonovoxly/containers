@@ -29,7 +29,7 @@
 
   roles:
     - role: ubuntu.raw_install_python
-    - role: instance.packages
+    - role: linux.packages
 
 # azure host
 - hosts: azuredev
@@ -56,3 +56,30 @@
     - role: linux.add_user
       users_vars: "{{ users }}"
     - role: linux.terraform_install
+
+- hosts: cloud
+  gather_facts: false
+
+  vars_files:
+    - vars/cloud.yml
+
+  roles:
+    - role: linux.packages
+    - role: linux.add_user
+      users_vars: "{{ users }}"
+    - role: linux.terraform_install
+    - role: ubuntu.gcloud_utils
+
+# google host
+- hosts: googledev
+  gather_facts: false
+
+  vars_files:
+    - vars/googledev.yml
+
+  roles:
+    - role: linux.packages
+    - role: linux.add_user
+      users_vars: "{{ users }}"
+    - role: linux.terraform_install
+    - role: ubuntu.gcloud_utils

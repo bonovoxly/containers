@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 docker run \
   -dt \
-  -h awsdev  \
-  --name awsdev \
-  -v $HOME/gits:/home/aws-user/gits \
-  ansible-container-awsdev /bin/bash
+  -h personal  \
+  --name personal \
+  -v $HOME/gits/personal:/home/aws-user/gits/personal \
+  modops/devcontainers-awsdev:20161211183404 /bin/bash
 
 # copy SSH configuration
 docker cp \
   $HOME/.ssh \
-  awsdev:/home/aws-user/.ssh
+  personal:/home/aws-user/.ssh

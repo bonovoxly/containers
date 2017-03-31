@@ -4,16 +4,19 @@ apt_packages:
   - git
   - groff
   - iputils-ping
+  - jq
   - libffi-dev
   - libssl-dev
   - libxml2-dev
   - libxslt1-dev
+  - man
   - python-dev
   - python-pip
   - sudo
+  - unzip
   - vim
   - virtualenv
-  - unzip
+  - wget
   - zsh
 
 pip_packages:

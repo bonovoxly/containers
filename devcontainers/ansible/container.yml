@@ -12,9 +12,13 @@ services:
   #     environment:
   #       - "DEBUG=1"
   #
+  awsdev:
+    image: ubuntu:16.04
   azuredev:
     image: ubuntu:16.04
-  awsdev:
+  cloud:
+    image: ubuntu:16.04
+  googledev:
     image: ubuntu:16.04
 # registries: {}
 registries:
