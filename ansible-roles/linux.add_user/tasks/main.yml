@@ -17,6 +17,11 @@
 
 - name: Edit admin group in sudoers.
   lineinfile:
-    path: /etc/sudoers
-    regexp: '^%admin'
-    line: '%admin ALL=(ALL) NOPASSWD: ALL'
+    dest: /etc/sudoers
+    regexp: '^%sudo'
+    line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+
+- name: If ZSH, install oh my zsh.
+  shell: sudo -u {{ item.user }} sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  with_items: "{{ users_vars }}"
+  when: item.shell == '/bin/zsh'
