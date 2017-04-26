@@ -13,7 +13,6 @@ Note these use cases are a bit unique and solve a particular niche issue.  Howev
 - Clone the repository:
 
 ```
-git clone git@github.com:bonovoxly/playbook.git
 git clone git@github.com:bonovoxly/containers.git
 ```
 
