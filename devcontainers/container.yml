@@ -3,7 +3,9 @@ settings:
   # The Conductor container does the heavy lifting, and provides a portable
   # Python runtime for building your target containers. It should be derived
   # from the same distribution as you're building your target containers with.
-  conductor_base: ubuntu:16.04
+  conductor:
+    base: ubuntu:16.04
+    roles_path: ../roles
 defaults:
   apt_packages:
     - bash
@@ -25,37 +27,22 @@ defaults:
   npm_packages:
     - azure-cli
   pip_packages:
-    - markupsafe
+    - ansible
+    - ansible-modules-hashivault
+    - awscli
     - boto
     - boto3
-    - ansible
-    - awscli
     - dnspython
-  terraform_version: 0.9.8
+    - markupsafe
+  terraform_version: 0.9.11
   users:
     - name: me
       shell: /bin/zsh
       groups: sudo
       shell_config: .zshrc
 services:
-  # awsdev:
-  #   from: ubuntu:16.04
-  #   entrypoint: [/bin/bash]
-  #   working_dir: /root
-  #   user: root
-  # azuredev:
-  #   from: ubuntu:16.04
-  #   entrypoint: [/bin/bash]
-  #   working_dir: /root
-  #   user: root
   cloud:
     from: ubuntu:16.04
-  #  entrypoint: [/bin/bash]
-  #  working_dir: /root
-  #  become: yes
-  #  user: root
-    # vars_files:
-      # - vars/cloud.yml
     roles:
       - role: linux.packages
       - role: linux.add_user
@@ -64,13 +51,7 @@ services:
       - role: linux.vim
       - role: linux.terraform_install
       - role: ubuntu.gcloud_utils
-  # googledev:
-  #   from: ubuntu:16.04
-  #   entrypoint: [/bin/bash]
-  #   working_dir: /root
-  #   user: root
-registries: {}
-  # Add optional registries used for deployment. For example:
-  #  google:
-  #    url: https://gcr.io
-  #    namespace: my-cool-project-xxxxxx
+registries:
+  docker_hub:
+    url: https://hub.docker.com
+    namespace: bcawthra
