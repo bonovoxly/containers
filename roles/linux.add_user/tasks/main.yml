@@ -5,15 +5,15 @@
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
-  with_items: "{{ users_vars }}"
+  with_items: "{{ users }}"
 
 - name: Copy shell_config when it exists.
-  copy:
+  template:
     src: "{{ item.shell_config }}"
     dest: "/home/{{ item.name }}/{{ item.shell_config }}"
     mode: 0600
     owner: "{{ item.name }}"
-  with_items: "{{ users_vars }}"
+  with_items: "{{ users }}"
 
 - name: Edit admin group in sudoers.
   lineinfile:
@@ -22,6 +22,7 @@
     line: '%sudo ALL=(ALL) NOPASSWD: ALL'
 
 - name: If ZSH, install oh my zsh.
-  shell: sudo -u {{ item.user }} sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-  with_items: "{{ users_vars }}"
+  become: "{{ item.name }}"
+  shell: /bin/bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  with_items: "{{ users }}"
   when: item.shell == '/bin/zsh'

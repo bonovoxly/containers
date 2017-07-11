@@ -1,0 +1,34 @@
+---
+- name: Make sure Vundle directory is empty.
+  file:
+    path: "/home/{{ item.name }}/.vim/bundle/Vundle.vim"
+    state: absent
+  with_items: "{{ users }}"
+
+- name: Install Vundle.
+  shell: >
+    git clone https://github.com/VundleVim/Vundle.vim.git /home/{{ item.name }}/.vim/bundle/Vundle.vim
+  args:
+    chdir: "/home/{{ item.name }}"
+  with_items: "{{ users }}"
+
+- name: Change permissions on .vim.
+  file:
+    path: "/home/{{ item.name }}/.vim"
+    owner: "{{ item.name }}"
+    recurse: yes
+  with_items: "{{ users }}"
+
+- name: Copy the vimrc file.
+  copy:
+    src: vimrc
+    dest: "/home/{{ item.name }}/.vimrc"
+    mode: 0600
+    owner: "{{ item.name }}"
+  with_items: "{{ users }}"
+
+- name: Install Vundle plugins.
+  shell: >
+    su - {{ item.name }} -c 'sh -c "vim -c PluginInstall -c qa"'
+  with_items: "{{ users }}"
+

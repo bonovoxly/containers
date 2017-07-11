@@ -1,0 +1,6 @@
+---
+# tasks for linux.oh_my_zsh
+- name: When users use ZSH, install oh-my-zsh.
+  shell: >
+    su - {{ item.name }} -c 'sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"'
+  with_items: "{{ users }}"

@@ -1,0 +1,21 @@
+---
+- name: Run locale-gen.
+  shell: locale-gen en_US.UTF-8
+
+- name: Configure LANG environment variable.
+  lineinfile:
+    path: /etc/environment
+    regexp: '^LANG.*'
+    line: 'LANG=en_US.UTF-8'
+
+- name: Configure the LANGUAGE environment variable.
+  lineinfile:
+    path: /etc/environment
+    regexp: '^LANGUAGE.*'
+    line: 'LANGUAGE=en_US:en'
+
+- name: Configure the LC_ALL environment variable.
+  lineinfile:
+    path: /etc/environment
+    regexp: '^LC_ALL.*'
+    line: 'LC_ALL=en_US.UTF-8'

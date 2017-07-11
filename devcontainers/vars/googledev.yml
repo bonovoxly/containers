@@ -1,5 +1,6 @@
 
 apt_packages:
+  - apt-transport-https
   - wget
 
 
@@ -8,11 +9,11 @@ pip_packages:
   - boto
   - boto3
   - ansible
-  - awscli
   - dnspython
+  - gsutil
 
 users:
-  - name: aws-user
+  - name: me
     shell: /bin/zsh
-    groups: sudo 
+    groups: sudo
     shell_config: .zshrc

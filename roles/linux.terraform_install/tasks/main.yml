@@ -1,0 +1,22 @@
+---
+# tasks file for linux.terraform_install
+- name: Download Terraform.
+  get_url:
+    url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+    dest: "/root/"
+
+
+- name: Unzip Terraform.
+  shell: >
+    unzip /root/terraform_{{ terraform_version }}_linux_amd64.zip
+  args:
+    chdir: /root
+
+- name: Move Terraform to /usr/local/bin.
+  shell: >
+    mv /root/terraform /usr/local/bin/terraform
+
+- name: Clean up old zip file.
+  file:
+    path: "/root/terraform_{{ terraform_version }}_linux_amd64.zip"
+    state: absent

@@ -1,0 +1,27 @@
+---
+# tasks file for ubuntu.gcloud_utils
+- name: Download the Cloud SDK.
+  get_url:
+    url: https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-156.0.0-linux-x86.tar.gz
+    dest: /tmp/google-cloud-sdk.tar.gz
+
+# - name: Unarchive the Google Cloud SDK.
+#   unarchive:
+#     src: /tmp/google-cloud-sdk.tar.gz
+#     dest: /tmp
+#
+# - name: Add zshrc config.
+#   lineinfile:
+#     path: "/home/{{ item.name }}/.zshrc"
+#     regexp: '^if.*google-cloud-sdk.*path\.zsh\.inc.*'
+#     line: >
+#       if [ -f '/home/aws-user/google-cloud-sdk/path.zsh.inc' ]; then source '/home/aws-user/google-cloud-sdk/path.zsh.inc'; fi
+#   with_items: "{{ users }}"
+#
+# - name: Add zshrc config.
+#   lineinfile:
+#     path: "/home/{{ item.name }}/.zshrc"
+#     regexp: '^if.*google-cloud-sdk\/completion\.zsh\.inc.*'
+#     line: >
+#       if [ -f '/home/aws-user/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/aws-user/google-cloud-sdk/completion.zsh.inc'; fi
+#   with_items: "{{ users }}"

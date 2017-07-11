@@ -1,0 +1,83 @@
+set nocompatible              " be iMproved, required
+filetype on                  " required
+" filetype plugin on
+
+" colorizing
+" colo darkblue
+syntax on
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'scrooloose/nerdcommenter'
+
+" end of vundle
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" things...
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd w
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" new leader
+let mapleader=","
+" open nerdtree with \n
+nnoremap <Leader>n :NERDTreeToggle<Enter>
+nnoremap <Leader>f :NERDTreeFind<CR>
+
+" date leader
+nnoremap <C-S-d> "=strftime("%Y-%m-%d %H:%M:%S")<CR>P
+inoremap <C-S-d> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+nnoremap <Leader>d <C-r>strftime("%Y-%m-%d %H:%M:%S")<CR>P
+iabbrev xdate <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+
+" bg color leader
+map <Leader>bg :let &colo = ( &colo == "dark"? "light" : "dark" )<CR>
+
+" nerdtree stuff
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+" smart tab
+set showmatch " Shows matching brackets
+set ruler " Always shows location in file (line#)
+set smarttab " Autotabs for certain code
+set shiftwidth=2
+" set paste
+" enables :Paste to just do what you want
+command Paste execute 'set noai | insert | set ai'
+
+" nerdspace
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" " Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" " Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" " Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" no automatic commenting
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=0
+
+" crazy paste mode
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+    set pastetoggle=<Esc>[201~
+      set paste
+        return ""
+      endfunction

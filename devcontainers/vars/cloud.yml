@@ -3,8 +3,12 @@ apt_packages:
   - man
   - wget
   - jq
+  - npm
 
 google_cloud_sdk: 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-148.0.1-linux-x86_64.tar.gz'
+
+npm_packages:
+  - azure-cli
 
 pip_packages:
   - markupsafe
@@ -15,7 +19,7 @@ pip_packages:
   - dnspython
 
 users:
-  - name: aws-user
+  - name: me
     shell: /bin/zsh
     groups: sudo
     shell_config: .zshrc

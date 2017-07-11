@@ -7,7 +7,7 @@ npm_packages:
   - azure-cli
 
 users:
-  - name: azure-user
+  - name: me
     shell: /bin/zsh
     groups: sudo 
     shell_config: .zshrc
