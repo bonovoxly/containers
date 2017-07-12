@@ -2,7 +2,7 @@
 
 This project containers various Dockerfiles, docker-compose files, ans ansible-container files.  It's a collection of environments and tools that I use. 
 
-- `devcontainers` - a Docker container meant to act as a DevOps/cloud infrastructure environment.  Has multiple DevOps tools, such as AWS CLI, Azure CLI, GCloud, Ansible, Terraform, etc.
+- `devcontainers` - a Docker container meant to act as a DevOps/cloud infrastructure environment.  Has multiple DevOps tools, such as AWS CLI, Azure CLI, GCloud, Ansible, Terraform, etc. [End result Docker image can be found here](https://hub.docker.com/r/bcawthra/cloud/).
 - `docker-compose` - a collection of docker-compose files, used for testing.  
 
 # devcontainer build
