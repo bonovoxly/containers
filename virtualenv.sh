@@ -5,8 +5,14 @@ if [ ! -f ./env/bin/activate ]; then
   virtualenv env
   source ./env/bin/activate
   pip install boto ansible setuptools
-  #pip install boto ansible setuptools ansible-container[docker]
 fi
+if [ ! -d ansible-container ]; then
+  git clone https://github.com/ansible/ansible-container.git
+fi
+cd ansible-container
+git pull
+pip install -e '.[docker]'
+cd ../
 
 echo "ansible-container installed and configured."
 echo "run 'source ./env/bin/activate'."
