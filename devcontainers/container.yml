@@ -51,7 +51,4 @@ services:
       - role: linux.vim
       - role: linux.terraform_install
       - role: ubuntu.gcloud_utils
-registries:
-  docker_hub:
-    url: https://hub.docker.com
-    namespace: bcawthra
+registries: {}
