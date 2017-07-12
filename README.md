@@ -1,14 +1,11 @@
 # containers
 
-This project uses the very alpha release of ansible-container to create and manage Docker containers using Ansible.  It establishes an ansible-container environment and creates the following Docker images:
+This project containers various Dockerfiles, docker-compose files, ans ansible-container files.  It's a collection of environments and tools that I use. 
 
-- `generaldev` - a Docker image to run interactively, for testing and/or random development.
-- `azuredev` - a Docker image to run interactively, for use with Azure Resource Manager and Ansible.
-- `awsdev` - a Docker image to run interactively, for use with Amazon Web Services and Ansible.
+- `devcontainers` - a Docker container meant to act as a DevOps/cloud infrastructure environment.  Has multiple DevOps tools, such as AWS CLI, Azure CLI, GCloud, Ansible, Terraform, etc.
+- `docker-compose` - a collection of docker-compose files, used for testing.  
 
-Note these use cases are a bit unique and solve a particular niche issue.  However, it also serves as a handy testing environment for [ansible-container](https://github.com/ansible/ansible-container).
-
-# quickstart
+# devcontainer build
 
 - Clone the repository:
 
@@ -20,7 +17,7 @@ git clone git@github.com:bonovoxly/containers.git
 
 ```
 cd containers
-./environment.sh
+./virtualenv.sh
 ```
 
 - Activate the PIP environment:
@@ -34,9 +31,9 @@ source ./env/bin/activate
 ```
 ansible-container version
 ```
-Output should be:
+Output should be something like:
 ```
-Ansible Container, version 0.2.0
+Ansible Container, version 0.9.2rc0
 ```
 
 - See the README.md in the subdirectories for more information on individual projects. In general, it should be the following:
@@ -44,13 +41,6 @@ Ansible Container, version 0.2.0
 - To build the Docker images change to the project, run:
 
 ```
-ansible-container build --with-volumes ${PWD}../ansible-roles:/roles
+ansible-container build 
 ```
 
-Docker image should build.
-
-- To push the Docker images, run:
-
-```
-ansible-container --debug push --with-volumes ${PWD}../ansible-roles:/roles --with-variables docker_url=https://YOUR.DOCKERREGISTRY.COM,docker_namespace=YOURNAMESPACE
-```
